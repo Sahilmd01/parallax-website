@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    height: .1rem;
+    width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #67ccff;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #194eb9;
+    border-radius: 5rem;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #1d002c;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 25px 10%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 1001;
+}
+
+.logo {
+    font-size: 2rem;
+    color: #12f7ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+ul.navlist {
+    display: flex;
+    align-items: center;
+}
+
+.navlist li {
+    margin-left: 1rem;
+}
+
+.navlist li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 5px 12px;
+    border: 2px solid #12f7ff;
+    border-radius: 25px;
+    transition: all .3s ease;
+}
+
+.navlist li a:hover, 
+.navlist li a.active {
+    box-shadow: 0 0 1rem #12f7ff;
+    background: #12f7ff;
+    color: #1d002c;
+}
+
+section {
+    min-height: 100vh;
+}
+
+.parallax-home {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.parallax-home img {
+    position: absolute;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* Add this to the existing CSS */
+.parallax-home #text {
+    position: fixed; /* Fixed position ensures it stays in place while scrolling */
+    font-size: 2.5rem;
+    text-shadow: 0 10px 4px rgba(0, 0, 0, 0.85);
+    top: 80%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for perfect centering */
+    text-align: center; /* Optional: ensures multi-line centering */
+    z-index: 1002; /* Ensure the text stays above other content */
+    overflow: hidden; /* Hide the text initially */
+    white-space: nowrap; /* Ensure the text stays in a single line */
+    border-right: 4px solid #12f7ff; /* Simulate typing cursor */
+    width: 0; /* Start with no width */
+    animation: typing 4s steps(50) 1s forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    to {
+        width: 100%; /* Expand the width to show all the text */
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent; /* Make the cursor blink */
+    }
+}
+
+
+
+.parallax-home img#moon {
+    mix-blend-mode: screen;
+}
+
+.about {
+    position: relative;
+}
+
+.about img {
+    position: absolute;
+    z-index: 1000;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.about img.about-waterfall {
+    position: absolute;
+    top: -95px;
+}
+
+.about .info-box {
+    position: absolute;
+    top: 0%;
+    left: 10%;
+    width: 50%;
+    z-index: 1003;
+    background: #1d002c;
+}
+
+.about .info-box h2 {
+    font-size: 2.5rem;
+}
+
+.about .info-box p {
+    margin-bottom: 1.5rem;
+    margin-top: .5rem;
+}
+
+.btn {
+    background: #12f7ff;
+    color: #1d002c;
+    text-decoration: none;
+    border-radius: 25px;
+    padding: .5rem 1rem;
+    transition: all .3s ease;
+    border: 2px solid #12f7ff;
+    font-weight: 500;
+}
+
+.btn:hover {
+    box-shadow: 0 0 1rem #12f7ff;
+    background: #1d002c;
+    color: #12f7ff;
+}
+
+.products {
+    background: #121137;
+    padding: 3rem 10%;
+}
+
+.products h2 {
+    font-size: 2rem;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+/* Flip effect for product cards */
+.product-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    perspective: 1000px; /* Enables 3D effect */
+}
+
+.card {
+    padding: 1rem;
+    border: 2px solid #12f7ff;
+    text-align: center;
+    border-radius: 25px;
+    display: block;
+    transition: all .4s ease, transform 0.4s ease;
+    z-index: 999;
+    transform-style: preserve-3d; /* Ensures 3D effect is maintained */
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: rotateY(180deg); /* Flip the card on hover */
+}
+
+/* Back side of the product card */
+.card .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #1d002c;
+    color: #fff;
+    transform: rotateY(180deg); /* Flip the back side */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Optional: Styling for the front side of the card (product image, price) */
+.card .card-content {
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Ensure the content stays centered in the front */
+.card img {
+    width: 150px;
+    height: 150px;
+    margin-top: -4rem;
+    filter: drop-shadow(0 0 0.5rem #1797ff);
+}
+
+/* Additional styles to maintain the effect */
+.card .price-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1; /* Ensure it's on top */
+}
+
+
+.info {
+    padding-bottom: .5rem;
+}
+
+.info p {
+    padding: .5rem 0 1.5rem 0;
+}
+
+.info .btn {
+    display: block;
+    width: 60%;
+    margin: auto;
+}
+
+.price-name span {
+    color: #04cf37;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#progress {
+    position: fixed;
+    z-index: 1000;
+    bottom: 60px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #1d002c;
+    cursor: pointer;
+}
+
+#progress-value {
+    display: block;
+    height: calc(100% - 12px);
+    width: calc(100% - 12px);
+    background: #fff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+}
+/*-------------------contact section --------------------*/
+.contact {
+    background: #1d002c;
+    color: #fff;
+    padding: 4rem 5%;
+    text-align: center;
+    position: relative;
+    margin-top: 5rem;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column; /* Aligns elements vertically */
+    align-items: center; /* Centers items horizontally */
+}
+
+.contact-left {
+    margin-bottom: 2rem;
+    text-align: center; /* Centers text inside the element */
+}
+
+.contact-left .sub-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #12f7ff;
+}
+
+.contact-left p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #ccc;
+}
+
+.social-icons {
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    margin: 0 0.5rem;
+    color: #12f7ff;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: #fff;
+}
+
+.download-cv {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    background: #12f7ff;
+    color: #1d002c;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.download-cv:hover {
+    background: #1d002c;
+    color: #12f7ff;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #12f7ff;
+}
+
+.contact-right {
+    max-width: 600px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(18, 247, 255, 0.8), rgba(29, 0, 44, 0.8));
+    padding: 2rem;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(18, 247, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Centers content inside */
+}
+
+.contact-right:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(18, 247, 255, 0.5);
+}
+
+.contact-right form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center; /* Centers form elements */
+}
+
+.contact-right input,
+.contact-right textarea {
+    width: 100%;
+    padding: 1rem;
+    background: #2a2a4b;
+    color: #fff;
+    border: 1px solid #12f7ff;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.contact-right textarea:focus {
+    border-color: #1d002c;
+    background: #12f7ff;
+    color: #1d002c;
+    outline: none;
+}
+
+.contact-right button {
+    background: #12f7ff;
+    color: #1d002c;
+    padding: 0.8rem 2rem;
+    border-radius: 20px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.contact-right button:hover {
+    background: #1d002c;
+    color: #12f7ff;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #12f7ff;
+}
+
+.contact-right #msg {
+    font-size: 1rem;
+    color: #12f7ff;
+    margin-top: 1rem;
+    text-align: center;
+}
+.copyright {
+    text-align: center; /* Centers the text */
+    margin-top: 3rem; /* Moves it down from the contact section */
+    font-size: 1rem; /* Adjust font size for better readability */
+    color: #12f7ff; /* Light grey color for the text */
+    background: #1d002c; /* Matches the contact section background */
+    padding: 1rem; /* Adds some spacing around the text */
+    border-radius: 15px; /* Optional: Adds rounded corners */
+    width: 80%; /* Adjusts the width of the copyright section */
+    margin-left: auto; /* Centers the section horizontally */
+    margin-right: auto; /* Centers the section horizontally */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Optional: Adds a shadow */
+}
